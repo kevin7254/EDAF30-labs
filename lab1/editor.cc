@@ -1,6 +1,7 @@
 #include "editor.h"
 
 #include <string>
+#include <iostream>
 
 using std::string;
 
@@ -12,5 +13,19 @@ size_type Editor::get_size() const
 }
 
 size_type Editor::find_left_par(size_type pos) const {
-    return string::npos;
+	std::string str = text;
+	int i = 1;
+	int t = pos-1;
+
+	std::cout << str << "\n";
+
+	while(i > 0) {
+		char c = str[++t];
+		if((c=='(') || (c=='{') || (c=='[')) {
+			i++;
+		} else if((c==')') || (c=='}') || (c==']')) {
+			i--;
+		}
+	}		
+       	return t;
 }
