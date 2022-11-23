@@ -1,0 +1,6 @@
+/Users/kevinnilsson/Documents/c++-labs/labs-edaf30/lab1/cmake-example/build/CMakeFiles/SimpleMain.dir
+/Users/kevinnilsson/Documents/c++-labs/labs-edaf30/lab1/cmake-example/build/CMakeFiles/edit_cache.dir
+/Users/kevinnilsson/Documents/c++-labs/labs-edaf30/lab1/cmake-example/build/CMakeFiles/rebuild_cache.dir
+/Users/kevinnilsson/Documents/c++-labs/labs-edaf30/lab1/cmake-example/build/testlib/CMakeFiles/TestLib.dir
+/Users/kevinnilsson/Documents/c++-labs/labs-edaf30/lab1/cmake-example/build/testlib/CMakeFiles/edit_cache.dir
+/Users/kevinnilsson/Documents/c++-labs/labs-edaf30/lab1/cmake-example/build/testlib/CMakeFiles/rebuild_cache.dir
