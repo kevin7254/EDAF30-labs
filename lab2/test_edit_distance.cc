@@ -5,8 +5,11 @@
  * and it is assumed to be declared in edit_distance.h
  */
 #include "edit_distance.h"
-
+#include <math.h>
 #include <iostream>
+
+
+#define MIN(x,y) ((x) < (y) ? (x) : (y))
 
 bool do_test(const std::string& x, const std::string& y, int expected)
 {
@@ -38,4 +41,20 @@ int main()
         std::cout << "\nPassed\n";
     else
         std::cout << "\nFailed " << res << " tests\n";
+}
+
+int edit_distance(const std::string& s1, const std::string& s2) {
+        const std::size_t len1 = s1.size(), len2 = s2.size();
+	int d[26][26];
+	d[0][0] = 0;
+	for(unsigned int i = 1; i <= len1; ++i) d[i][0] = i;
+	for(unsigned int i = 1; i <= len2; ++i) d[0][i] = i;
+
+	for(unsigned int i = 1; i <= len1; ++i)
+		for(unsigned int j = 1; j <= len2; ++j)
+                      d[i][j] = std::min({ d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (s1[i - 1] == s2[j - 1] ? 0 : 1) });
+	
+	std::cout << d[len1][len2] << std::endl;
+
+return d[len1][len2];
 }

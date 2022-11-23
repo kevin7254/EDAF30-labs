@@ -16,7 +16,7 @@ void example()
 {
     std::unique_ptr<int[]> xs(new int[10]);
     std::iota(xs.get(), xs.get()+10, 0);
-    print(xs.get(), 15);
+    print(xs.get(), 10);
 }
 
 int main()

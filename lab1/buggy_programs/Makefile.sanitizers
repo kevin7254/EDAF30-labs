@@ -21,7 +21,7 @@ PROGS=ub leak bounds bounds-heap dangling sum sum-alt bounds-alt bounds-heap-alt
 ALL: $(PROGS)
 
 leak: leak.cc
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -fsanitize=leak -o $@ $<
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -fsanitize=address -o $@ $<
 
 dangling: dangling.cc
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -fsanitize=address -o $@ $<
