@@ -21,19 +21,13 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS =  test_editor test_coding print_argv encode
+PROGS = testUser
 
 all: $(PROGS)
+test: testUser
 
-test: test_coding test_editor
-	./test_coding
-	./test_editor
-
-# Targets rely on implicit rules for compiling and linking
-print_argv: print_argv.o
-test_editor: test_editor.o editor.o
-test_coding: test_coding.o coding.o
-encode: encode.o decode.o
+# Targets rely on implicit rules for compiling and linking 
+testUser: testUser.o UserTable.o User.o
 # Phony targets
 .PHONY: all test clean distclean
 

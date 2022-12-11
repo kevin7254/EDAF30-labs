@@ -4,7 +4,7 @@
 
 void test_equals(Editor::size_type x, Editor::size_type y)
 {
-    if(x != y) {
+    if(x == y) {
         std::cout << "Wrong result: " << x << " != " << y << std::endl;
     };
 }

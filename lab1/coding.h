@@ -3,4 +3,6 @@
 
 unsigned char encode(unsigned char c);
 unsigned char decode(unsigned char c);
+void encodefile();
+void decodefile();
 #endif

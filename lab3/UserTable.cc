@@ -6,10 +6,10 @@ const User UserTable::user_not_found = User{-1,"Not Found"};
 
 UserTable::UserTable() :users{new User[capacity]} { }
 
-UserTable::UserTable(const std::string& fname) :UserTable{}
+UserTable::UserTable(const std::string& fname)
 {
     std::ifstream ufile(fname);
-
+	users = new User[capacity];
     if(ufile.is_open()) {
         while(ufile) {
             int cn;
@@ -40,9 +40,11 @@ void UserTable::addUser(const User& u)
     for(int i=n; i > pos; --i){
         users[i] = users[i-1];
     }
+    
 
     //3. stoppa in den nya användaren i luckan
     users[pos] = u;
+    n++;
 }
 
 User UserTable::find(int c) const
@@ -53,11 +55,11 @@ User UserTable::find(int c) const
     int high = n - 1;
     int mid = -1;
     bool found = false;
-    while (low < high && ! found) {
+    while (low <= high && ! found) {
         mid = (low + high) / 2;
         //
         int midnbr = users[mid].getCardNbr();
-        if (midnbr = c) {
+        if (midnbr == c) {
             found = true;
         } else if (users[mid].getCardNbr() < c) {
             low = mid + 1;
@@ -70,11 +72,9 @@ User UserTable::find(int c) const
 }
 User UserTable::find(std::string name) const
 {
-    for (int i = 0; i != n; ++i) {
+    for (int i = 0; i < n; ++i) {
         if (users[i].getName() == name) {
             return users[i];
-        } else {
-            return user_not_found;
         }
     }
     return user_not_found;
@@ -108,7 +108,7 @@ void UserTable::print(std::ostream& os) const
     * Om något kortnummer inte kunde sökas upp returneras detta. Annars, om
     * alla sökningar lyckades, returneras 0.
     */
-int testFindNbr(const UserTable ut)
+int testFindNbr(const UserTable& ut)
 {
     for (int i = 0; i < ut.n; i++) {
         int nbr = ut.users[i].getCardNbr();
