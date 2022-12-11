@@ -18,6 +18,9 @@ void print(const Date& d) {
 	cout << setw(2) << setfill('0') << d.getDay();
 }
 
+
+
+
 int main() {
 	// Check input and output of dates. Uncomment the following when you 
 	// have added operator>> and operator<<.
