@@ -10,8 +10,22 @@ bool test_tags(std::ifstream& infile, std::ostream& outfile)
 	TagRemover TagRemover(infile);
 	TagRemover.print(outfile);
 
+	//test
+	std::ifstream infile_notags("no_tags.html");
+	std::string text;
+	std::string line;
+	while(getline (infile_notags, line)){
+		text.append(line);
+		text.append("\n");
 	}
-	return false;
+	std::string sub = text.substr(0, text.rfind("<"));
+	assert(sub.find(">") == std::string::npos);
+	assert(sub.find("<") == std::string::npos);
+	std::string sub2 = text.substr(text.rfind("<"), 4);
+	assert(sub2.compare("<> &") ==0);
+
+	}
+	return true;
 
 }
 

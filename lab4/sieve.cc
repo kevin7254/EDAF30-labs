@@ -2,14 +2,18 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <cassert>
 
 int main(){
+
 	Sieve s(200);
-	std::cout << s.highestPrime() << std::endl;
 	s.print();
 
+	Sieve s2(35);
+	s2.test();
+	std:: cout << "TEST PASSED" << std::endl;
 
-	Sieve s2(100000);
+	Sieve s3(100000);
 	std::cout << s2.highestPrime() << std::endl;
 return 0;
 
@@ -28,7 +32,6 @@ Sieve::Sieve(int nbrs){
 			}
 			increment += i;
 		}
-
 	}
 }
 
@@ -44,7 +47,11 @@ void Sieve::print(){
 		}
 	}
 	for(auto k : primes){
-		std::cout << k << " ";
+		std::cout << k << " " << std::endl;
 	}
-	
 }
+void Sieve::test(){
+	assert(text.compare(answer)== 0);
+}
+	
+

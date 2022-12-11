@@ -38,8 +38,7 @@ TagRemover::TagRemover(std::istream& in) {
 	while(s_open != std::string::npos){
 		std::size_t s_close = text.find(';', s_open);
 		int s_tag = s_close -s_open+1;
-		std::string sub = text.substr(s_open, s_tag);
-		std::cout << sub << "heh";		
+		std::string sub = text.substr(s_open, s_tag);		
 		std::string rep = decode(sub);
 		text.replace(s_open, s_tag, rep);
 		s_open = text.find('&', s_open+1);
