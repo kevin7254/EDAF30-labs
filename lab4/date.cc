@@ -2,6 +2,7 @@
 #include "date.h"
 #include <string>
 #include <iostream>
+#include <sstream>
 
 int Date::daysPerMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
@@ -27,16 +28,28 @@ std::ostream& operator<<(std::ostream& os, const Date& dt)
 
 std::istream& operator>>(std::istream& is, Date& dt)
 {
-	const std::string s = std::to_string(dt.year) + '-' + std::to_string(dt.month) + '-' + std::to_string(dt.day);
-	if(is >> std::to_string(dt.year) >> std::to_string(dt.month) >> std::to_string(dt.day))
+	char str[11];
+	is.getline(str, 11);
+	std::string s(str);
+	std::stringstream ss(s);
+	if(ss>> dt.year)
 	{
-		return is;
+		if(ss.get() == '-')
+		{
+			if(ss>> dt.month)
+			{
+				if(ss.get() == '-')
+				{
+					if(ss>> dt.day)
+					{
+						return is;
+					}
+				}
+			}
+		}
 	}
-	else
-	{
-		is.setstate(std::ios_base::failbit);
-		return is;
-	}
+	is.setstate(std::ios::failbit);
+	return is;
 }
 
 int Date::getYear() const {
